@@ -1,0 +1,12 @@
+php artisan serve = for launching the server for application
+php artisan serve --port=port_number = for launching the server with a specific port
+
+php artisan make:controller Controller_Name = for creating a controller with a specific name
+php artisan make:controller --resource Controller_Name = for creating a controller with initialize resource like CRUD
+
+!!!Important!!!
+when we are creating an application and indicate the specific method of laravel we must e sure that the php version
+is supported in this dist of laravel
+
+
+we have created a new view in the view folder to display it in the browser
