@@ -26,4 +26,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function post() {
+        //this will return the value from the database
+        //id_user is the foreign key that in some cases we need to specify
+        return $this->hasOne('App\Post', 'id_user');
+    }
+
+    //thi is the one to many relationship function
+    public function posts() {
+        return $this->hasMany('App\Post', 'id_user');
+    }
+
+    //this is the many to many relationship
+    //and we indicate the table to with it is connecting
+    public function roles() {
+        return $this->belongsToMany('App\Role', 'user_role');
+    }
 }

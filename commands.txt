@@ -5,8 +5,35 @@ php artisan make:controller Controller_Name = for creating a controller with a s
 php artisan make:controller --resource Controller_Name = for creating a controller with initialize resource like CRUD
 
 !!!Important!!!
-when we are creating an application and indicate the specific method of laravel we must e sure that the php version
+when we are creating an application and indicate the specific method of laravel we must be sure that the php version
 is supported in this dist of laravel
 
 
 we have created a new view in the view folder to display it in the browser
+
+php artisan migrate = creates the tables in the database
+
+php artisan make:migration migration_name --creat="table_name" = this command create a migration and the table
+
+php artisan tinker = this command goes to the shell of the laravel
+    Schema::drop('table_name') = this shell command will drop the specified table from the database
+
+php artisan migrate:rollback = this command will rollback the latest migration made by the user
+
+php artisan make:migration migration_name --table="table_name" = this command will create a migration for an existing table in the database
+
+php artisan migrate:status = this command will show the status of the migrations that exists in the app
+
+!!!Important!!!
+when we want to make changes to the migration of the existing table, first we need to rollback the made migrations before that
+and after we execute the migrate command to make the changes from the migration file
+
+php artisan migrate:refresh = this command will roolback the migrations and execute them again
+
+php artisan migrate:reset = this command will reset all the migration from database and delete them
+
+php artisan make:model model_name = this command will create a model in the app
+
+CTRL + LEFT_CLICK = this shortcut will go the class of the thing that u have clicked
+
+php artisan make:model model_name -m = this command will create a model with a migration
