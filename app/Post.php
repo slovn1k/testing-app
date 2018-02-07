@@ -27,6 +27,11 @@ class Post extends Model
         //id is the foreign key that in some cases we need to specify
         return $this->belongsTo('App\User', 'id');
     }
+
+    //this is a polymorphic function that morph to many table without having and foreign key
+    public function photoes() {
+        return $this->morphMany('App\Photo', 'imageable', 'imageable_type', 'imegable_id');
+    }
 }
 
 

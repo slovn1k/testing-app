@@ -41,6 +41,12 @@ class User extends Authenticatable
     //this is the many to many relationship
     //and we indicate the table to with it is connecting
     public function roles() {
-        return $this->belongsToMany('App\Role', 'user_role');
+        //withPivot gives us the possibility to get data from the pivot table, witch in our situation is user_role
+        return $this->belongsToMany('App\Role', 'user_role')->withPivot('created_at');
+    }
+
+    //this is a polymorphic function that morph to many table without having and foreign key
+    public function photoes() {
+        return $this->morphMany('App\Photo', 'imageable', 'imageable_type', 'imegable_id');
     }
 }

@@ -12,8 +12,10 @@
 */
 
 //here we are using the functionality from the Post model
+use App\Country;
 use App\Post;
 use App\User;
+use App\Photo;
 
 Route::get('/', function () {
     return view('welcome');
@@ -229,4 +231,51 @@ Route::get('/many_users/{id}/role', function($id) {
     $users = User::find($id)->orderBy('id', 'desc')->get();
 
     echo $users."<br>";
+});
+
+
+//here we are getting the data from the pivot table, witch is user_role
+Route::get('/user/pivot/{id}', function($id) {
+   $user = User::find($id);
+
+   foreach ($user->roles as $role){
+       return $role->pivot->created_at;
+   }
+});
+
+//has many through relationship that uses three tables and gets data through one
+Route::get('/user/country', function() {
+    $country = Country::find(1);
+
+    foreach ($country->posts as $post){
+        return $post->title;
+    }
+});
+
+
+
+//Polymorphic relations
+//here we are using route to make a polymorphic request
+Route::get('/polymorph/{id}', function($id) {
+    $user = User::find($id);
+
+    foreach ($user->photoes as $photo){
+        return $photo;
+    }
+});
+
+Route::get('/polymorph_post/{id}', function($id) {
+   $post = Post::find($id);
+
+   foreach ($post->photoes as $photo){
+       return $photo;
+   }
+});
+
+
+//this is the inverse polymorphic request
+Route::get('/photo/{id}', function($id){
+   $photo = Photo::findOrFail($id);
+
+   return $photo;
 });
