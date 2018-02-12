@@ -37,3 +37,15 @@ php artisan make:model model_name = this command will create a model in the app
 CTRL + LEFT_CLICK = this shortcut will go the class of the thing that u have clicked
 
 php artisan make:model model_name -m = this command will create a model with a migration
+
+!!!Tinker commands
+
+php artisan tinker = this command will activate the tinker tools to operate with database
+
+$variable_name = App\model_name::create(['column'=>'value']); = this command will insert a new record into the database
+
+$variable_name = new App\model_name = this command will create a new object to operate with him
+
+$variable_name->object_column = 'value' = this command will assign a value to the selected object property(column)
+
+$variable_name->save() = this method will inset the data to the database from the created object

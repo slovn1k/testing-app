@@ -16,6 +16,7 @@ use App\Country;
 use App\Post;
 use App\User;
 use App\Photo;
+use App\Tag;
 
 Route::get('/', function () {
     return view('welcome');
@@ -278,4 +279,23 @@ Route::get('/photo/{id}', function($id){
    $photo = Photo::findOrFail($id);
 
    return $photo;
+});
+
+//this is polymorphic many to many request
+Route::get('/post/tag', function() {
+
+    $post = Post::find(1);
+
+    foreach ($post->tags as $tag){
+        echo $tag->name;
+    }
+
+});
+
+Route::get('/tag/post', function() {
+   $tag = Tag::find(2);
+
+   foreach ($tag->posts as $post){
+       echo $post->title;
+   }
 });

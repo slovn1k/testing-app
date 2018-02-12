@@ -32,6 +32,10 @@ class Post extends Model
     public function photoes() {
         return $this->morphMany('App\Photo', 'imageable', 'imageable_type', 'imegable_id');
     }
+
+    public function tags() {
+        $this->morphToMany('App\Tag', 'taggable');
+    }
 }
 
 
