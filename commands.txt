@@ -49,3 +49,12 @@ $variable_name = new App\model_name = this command will create a new object to o
 $variable_name->object_column = 'value' = this command will assign a value to the selected object property(column)
 
 $variable_name->save() = this method will inset the data to the database from the created object
+
+$variable_name = App\model_name::find(number) = this command will find a record in the database base on the model that we want to call
+
+$variable_name->column_from_table = "new value" = this command will store the new data that we want after this command u need to make another
+    $variable_name->save() = this command will save the stored data into the database
+    $variable-name->delete() = this command will soft deleted a record from database
+    $variable_name->forceDelete() = this command will force delete the trashed records from database
+
+$variable_name->relationship_name = this command will show the result of the relationship if that exists in our app
